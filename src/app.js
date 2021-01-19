@@ -12,19 +12,107 @@ var chocolates = [
 ];
 
 //Progression 1: Add ___ chocolates of ____ color
+function addChocolates(chocolates,color,count)
+{
+    for(let i = 0;i < count;i++)
+    {
+        chocolates.unshift(color);
+    }
+    if(count <= 0)
+    { 
+        return 'Number cannot be zero/negative'; 
+    }
+}
 
 
 //Progression 2: Remove ___ chocolates from the top the dispenser
 
+function removeChocolates(chocolates,number)
+{
+    var removed=[];
+    if(number <= 0)
+    { 
+        return 'Number cannot be zero/negative'; 
+    }
+    else if(number > chocolates.length)
+    { 
+        return 'Insufficient chocolates in the dispenser';
+    }
+    else{
+    for(let i = 0; i < number; i++)
+    {
+        removed.push(chocolates.shift());
+    }
+    return removed;    
+    }
+}
+
 
 //Progression 3: Dispense ___ chocolates
+function dispenseChocolates(chocolates,number)
+{
+    var remove=[];
+    if(number <= 0)
+    { 
+        return 'Number cannot be zero/negative'; 
+    }
+    else if(number > chocolates.length)
+    { 
+        return 'Insufficient chocolates in the dispenser';
+    }
+    else{
+    for(let i = 0; i < number; i++)
+    {
+        remove.push(chocolates.pop());
+    }
+    return remove;    
+    }
+}
+
 
 
 //Progression 4: Dispense ___ chocolates of ____ color
+function dispenseChocolatesOfColor(chocolates,number,color)
+{
+    var remove=[];
+    if(number <= 0)
+    { 
+        return 'Number cannot be zero/negative'; 
+    }
+    else if(number > chocolates.length)
+    { 
+        return 'Insufficient chocolates in the dispenser';
+    }
+    else{
+    for(let i = 0; i < number; i++)
+    {
+        if(chocolates.pop() == color)
+            remove.push(chocolates.pop());
+    }
+    return remove;    
+    }
+}
 
 
 //Progression 5: Display ___ chocolates of each color. Return array of numbers [green, silver, blue, crimson, purple, red, pink]
-
+function noOfChocolates(chocolates)
+{
+    let noOfChocolates = [],count = 0;
+    let arr5 = ["green", "silver", "blue", "crimson", "purple", "red", "pink"];
+    if(arr5.length <= 0) return [];
+    else{
+        for(let j = 0; j <= arr5.length; j++)
+        {
+            for(let i = 0; i < chocolates.length; i++)
+            {
+                if(arr5[j] === chocolates[i]) count ++;
+            }
+            noOfChocolates.push(count);
+            count = 0;
+        }
+        return noOfChocolates;
+    }
+}
 
 //Progression 6: Sort chocolates based on count in each color. Return array of colors
 
